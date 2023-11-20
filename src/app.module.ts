@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { GenderModule } from './gender/gender.module';
 import { CitizenshipModule } from './citizenship/citizenship.module';
 import { CandidateModule } from './candidate/candidate.module';
+import { ReferenceModule } from './reference/reference.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CandidateModule } from './candidate/candidate.module';
     GenderModule,
     CitizenshipModule,
     CandidateModule,
+    ReferenceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

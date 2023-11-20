@@ -37,4 +37,15 @@ model candidate {
   address_id     String      @db.Uuid
   gender         gender      @relation(fields: [gender_id], references: [id])
   citizenship    citizenship @relation(fields: [citizenship_id], references: [id])
+  reference      reference[]
+}
+
+model reference {
+  id           String    @id @db.Uuid
+  title        String    @db.VarChar(255)
+  rating       Int
+  comment      String    @db.Text
+  candidate_id String    @db.Uuid
+  recruiter_id String    @db.Uuid
+  candidate    candidate @relation(fields: [candidate_id], references: [id])
 }
