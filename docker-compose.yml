@@ -13,15 +13,22 @@ services:
       - candidate-data:/var/lib/postgresql/data
     ports:
       - "5435:5432"
-  # candidate-service:
-  #   build: .
-  #   container_name: candidate-service
-  #   restart: always
-  #   ports:
-  #     - "8081:8080"
-  #   depends_on:
-  #     - candidate-db
+    networks:
+      - candidate-network
+  candidate-service:
+    build: .
+    container_name: candidate-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - candidate-db
+    networks:
+      - candidate-network
 
 volumes:
   candidate-data:
     name: candidate-data
+
+networks:
+  candidate-network:
+    # external: true

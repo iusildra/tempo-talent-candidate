@@ -8,6 +8,7 @@ export class ReferenceController {
 
   @Post()
   create(@Body() createReferenceDto: CreateReferenceDto) {
+    console.log(createReferenceDto);
     return this.referenceService.create(createReferenceDto);
   }
 
