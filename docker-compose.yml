@@ -12,23 +12,25 @@ services:
       - ./sql:/docker-entrypoint-initdb.d/
       - candidate-data:/var/lib/postgresql/data
     ports:
-      - "5435:5432"
+      - '5435:5432'
     networks:
-      - candidate-network
+      - default
+    
   candidate-service:
     build: .
     container_name: candidate-service
+    restart: always
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - candidate-db
     networks:
-      - candidate-network
+      - default
 
 volumes:
   candidate-data:
     name: candidate-data
 
 networks:
-  candidate-network:
-    # external: true
+  default:
+    name: candidate-network
